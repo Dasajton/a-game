@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 export default function LevelCollider() {
-  const gltf = useLoader(GLTFLoader, "./finalCollisionMap.glb");
+  const gltf = useLoader(GLTFLoader, "/FinalCollisionMap.glb");
   const mapRef = useRef(gltf);
 
   gltf.scene.traverse((object) => {

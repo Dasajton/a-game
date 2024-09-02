@@ -4,7 +4,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useAppContext } from "../AppContext";
 
 export default function Ninja() {
-  const gltf = useLoader(GLTFLoader, "./ninja.glb");
+  const gltf = useLoader(GLTFLoader, "/Ninja.glb");
   const playerRef = useRef(gltf.scene);
   const { playerPosition } = useAppContext();
 

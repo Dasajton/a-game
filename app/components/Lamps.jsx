@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 export default function Lamp() {
-  const gltf = useLoader(GLTFLoader, "./lampsFinal.glb");
+  const gltf = useLoader(GLTFLoader, "/LampsFinal.glb");
   const LampRef = useRef(gltf);
 
   gltf.scene.traverse((object) => {
@@ -13,8 +13,6 @@ export default function Lamp() {
       object.receiveShadow = true;
     }
   });
-
- 
 
   return (
     <>

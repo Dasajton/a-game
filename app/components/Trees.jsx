@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 export default function Tree() {
-  const gltf = useLoader(GLTFLoader, "./FinalTreeMap.glb");
+  const gltf = useLoader(GLTFLoader, "/FinalTreeMap.glb");
   const treeRef = useRef(gltf);
 
   gltf.scene.traverse((object) => {

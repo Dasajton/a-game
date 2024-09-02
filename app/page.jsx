@@ -8,7 +8,6 @@ import {
   Sky,
   Stars,
 } from "@react-three/drei";
-import Trees from "./components/Trees";
 import { Physics } from "@react-three/rapier";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import {
@@ -18,6 +17,7 @@ import {
   UICollectedItems,
   Lights,
   Lamp,
+  Trees,
   Scrolls,
   UILevelCompleted,
 } from "./components";
@@ -25,7 +25,7 @@ import keyboardMap from "./utility/keyboardControlls";
 import animationSet from "./utility/animationsSet";
 import { AppProvider } from "./AppContext";
 
-const characterURL = "./ninja.glb";
+const characterURL = "/Ninja.glb";
 
 export default function Game() {
   const canvasRef = useRef();

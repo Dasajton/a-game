@@ -15,27 +15,6 @@ body {
   height: 100vh;
 }
 
-/* .uiCollected {
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
-  z-index: 99;
-  background-color: #e81d18;
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "NanumBrush";
-  font-size: 4rem;
-  border-radius: 50%;
-  user-select: none;
-}
-
-.uiBG {
-  position: absolute;
-} */
-
 .uiCollected {
   position: absolute;
   bottom: 0rem;

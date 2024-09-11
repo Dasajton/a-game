@@ -57,3 +57,14 @@ body {
   user-select: none;
   pointer-events: none;
 }
+
+.uiTimer {
+  position: absolute;
+  z-index: 99;
+  font-size: 3rem;
+  color: red;
+}
+
+.uiTimer span {
+  color: white;
+}

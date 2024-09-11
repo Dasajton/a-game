@@ -20,6 +20,7 @@ import {
   Trees,
   Scrolls,
   UILevelCompleted,
+  Timer,
 } from "./components";
 import keyboardMap from "./utility/keyboardControlls";
 import animationSet from "./utility/animationsSet";
@@ -62,6 +63,7 @@ export default function Game() {
       <div className="container">
         <UICollectedItems />
         <UILevelCompleted />
+        <Timer />
         <Canvas ref={canvasRef} onClick={handleClick}>
           <Sky
             sunPosition={[0, 0.1, 0.1]}

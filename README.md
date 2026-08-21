@@ -19,3 +19,11 @@
 Though it was a project based on web development technologies we learned throughout the certification-course, I nonetheless chose this specific task to create a Game, because all the used technologies like ThreeJs, its react-three-libraries and the Physics Engine weren't tought but I had to learn them for myself to build up this result. 
 
 So it really helped me not only to get a rudimentary understanding in how games are built, but the real learning was how to do research on my own and create things when it comes to technologies or logics that I am not familiar with and what I need to do to understand and implement new technologies into a given project. 
+
+## 2026 Refresh
+The project received a pass of bug fixes and modernization:
+- Shadows were actually enabled on the renderer (they were configured on every mesh but never turned on for the canvas, so nothing ever cast a shadow).
+- Asset loading moved to `@react-three/drei`'s `useGLTF`, with all models preloaded up front and a real loading screen instead of a blank canvas.
+- Fixed a bug where collected scroll items never received their shadow flags due to a mismatched clone reference.
+- Dependencies bumped to their latest mutually-compatible versions; unused Tailwind setup removed.
+- Added an on-screen controls hint, favicon, and page metadata.

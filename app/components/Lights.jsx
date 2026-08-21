@@ -1,20 +1,19 @@
-import { useRef } from "react";
-import { useHelper } from "@react-three/drei";
-import { DirectionalLightHelper } from "three";
-
 export default function Lights() {
-  const lightRef = useRef();
-
-  // useHelper(lightRef, DirectionalLightHelper, 5, "red");
-
   return (
     <>
-      <ambientLight color={"lightblue"} intensity={0.2} />
+      <ambientLight color={"lightblue"} intensity={0.5} />
       <directionalLight
-        position={[0, 10, 10]}
-        ref={lightRef}
+        position={[40, 60, 20]}
         castShadow
-        intensity={0.2}
+        intensity={1.2}
+        shadow-mapSize={[2048, 2048]}
+        shadow-camera-left={-120}
+        shadow-camera-right={120}
+        shadow-camera-top={120}
+        shadow-camera-bottom={-120}
+        shadow-camera-near={0.5}
+        shadow-camera-far={300}
+        shadow-bias={-0.0005}
       />
     </>
   );

@@ -18,7 +18,7 @@ export default function UILevelCompleted() {
 
   return levelCompleted ? (
     <div className="levelCompleted">
-      <img src="collected.png" />
+      <img src="/collected.png" alt="Level completed" />
     </div>
   ) : null;
 }

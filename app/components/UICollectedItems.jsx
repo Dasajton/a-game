@@ -4,7 +4,7 @@ export default function UICollectedItems() {
   const { itemsCollected } = useAppContext();
   return (
     <div className="uiCollected">
-      <img src="Ui.png" className="uiBG" />
+      <img src="/Ui.png" className="uiBG" alt="" />
       {itemsCollected}
     </div>
   );

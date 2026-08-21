@@ -1,21 +1,22 @@
-import { useRef } from "react";
-import { useLoader } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { useEffect, useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 import { useAppContext } from "../AppContext";
 
 export default function Ninja() {
-  const gltf = useLoader(GLTFLoader, "/Ninja.glb");
-  const playerRef = useRef(gltf.scene);
+  const { scene } = useGLTF("/Ninja.glb");
+  const playerRef = useRef(scene);
   const { playerPosition } = useAppContext();
 
-  gltf.scene.traverse((object) => {
-    if (object.isMesh) {
-      object.castShadow = true;
-      object.receiveShadow = true;
-    }
-  });
+  useEffect(() => {
+    scene.traverse((object) => {
+      if (object.isMesh) {
+        object.castShadow = true;
+        object.receiveShadow = true;
+      }
+    });
+  }, [scene]);
 
   return (
-    <primitive object={gltf.scene} position={playerPosition} ref={playerRef} />
+    <primitive object={scene} position={playerPosition} ref={playerRef} />
   );
 }

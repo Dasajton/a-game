@@ -1,23 +1,24 @@
 import { useState, useMemo, useRef } from "react";
-import { useLoader } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { useGLTF } from "@react-three/drei";
 import { useAppContext } from "../AppContext";
 import { RigidBody } from "@react-three/rapier";
 
 export default function Scroll({ position = [0, -0.5, 0] }) {
-  const gltf = useLoader(GLTFLoader, "/ScrollLowPerf.glb");
-  const scene = useMemo(() => gltf.scene.clone(), [gltf]);
+  const { scene: sourceScene } = useGLTF("/ScrollLowPerf.glb");
+  const scene = useMemo(() => {
+    const clone = sourceScene.clone();
+    clone.traverse((object) => {
+      if (object.isMesh) {
+        object.castShadow = true;
+        object.receiveShadow = true;
+      }
+    });
+    return clone;
+  }, [sourceScene]);
   const [visible, setVisible] = useState(true);
   const lockItemCollect = useRef(false);
 
   const { setItemsCollected } = useAppContext();
-
-  gltf.scene.traverse((object) => {
-    if (object.isMesh) {
-      object.castShadow = true;
-      object.receiveShadow = true;
-    }
-  });
 
   const handleItemCollect = () => {
     if (!lockItemCollect.current) {

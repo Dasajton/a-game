@@ -1,13 +1,7 @@
 "use client";
-import { Suspense, useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import {
-  OrbitControls,
-  Stats,
-  KeyboardControls,
-  Sky,
-  Stars,
-} from "@react-three/drei";
+import { KeyboardControls, Sky, Stars, Loader } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import Ecctrl, { EcctrlAnimation } from "ecctrl";
 import {
@@ -24,21 +18,21 @@ import {
 import keyboardMap from "./utility/keyboardControlls";
 import animationSet from "./utility/animationsSet";
 import { AppProvider } from "./AppContext";
+import { preloadAssets } from "./utility/preloadAssets";
 
 const characterURL = "/Ninja.glb";
 
+preloadAssets();
+
 export default function Game() {
   const canvasRef = useRef();
+  const [isLocked, setIsLocked] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
 
     const handlePointerLockChange = () => {
-      if (document.pointerLockElement === canvas) {
-        console.log("Pointer locked!");
-      } else {
-        console.log("Pointer unlocked!");
-      }
+      setIsLocked(document.pointerLockElement === canvas);
     };
 
     document.addEventListener("pointerlockchange", handlePointerLockChange);
@@ -62,7 +56,17 @@ export default function Game() {
       <div className="container">
         <UICollectedItems />
         <UILevelCompleted />
-        <Canvas ref={canvasRef} onClick={handleClick}>
+        {!isLocked && (
+          <div className="controlsHint">
+            <p>Klicke, um zu spielen</p>
+            <p>
+              <strong>WASD</strong> bewegen &middot; <strong>Maus</strong>{" "}
+              umsehen &middot; <strong>Shift</strong> sprinten &middot;{" "}
+              <strong>Leertaste</strong> springen
+            </p>
+          </div>
+        )}
+        <Canvas ref={canvasRef} onClick={handleClick} shadows dpr={[1, 2]}>
           <Sky
             sunPosition={[0, 0.1, 0.1]}
             mieDirectionalG={1}
@@ -73,10 +77,6 @@ export default function Game() {
           <Stars depth={200} />
           <Physics>
             <Suspense fallback={null}>
-              {/* {debugging} */}
-              {/* <OrbitControls /> */}
-              {/* <Stats /> */}
-
               <KeyboardControls map={keyboardMap}>
                 <Ecctrl animated sprintMult={4.0}>
                   <EcctrlAnimation
@@ -97,6 +97,7 @@ export default function Game() {
             </Suspense>
           </Physics>
         </Canvas>
+        <Loader />
       </div>
     </AppProvider>
   );

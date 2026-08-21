@@ -91,3 +91,217 @@ body {
   font-size: 0.85rem;
   opacity: 0.85;
 }
+
+.controlsHintFlavor {
+  margin-top: 0.2rem !important;
+  font-style: italic;
+  color: #f2d98a;
+  opacity: 0.9 !important;
+}
+
+/* HUD */
+
+.hudBar {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 97;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.55rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(0, 0, 0, 0.45);
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 1.05rem;
+  user-select: none;
+}
+
+.hudDetections {
+  color: #ff8a8a;
+}
+
+.hudMute {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  pointer-events: auto;
+}
+
+.hudCompass {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 1.4rem;
+  z-index: 97;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  width: 4.2rem;
+  height: 4.2rem;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.hudCompassArrow {
+  font-size: 1.6rem;
+  line-height: 1;
+  color: #5ad1ff;
+  transition: transform 0.1s linear;
+}
+
+.hudCompassArrow.golden {
+  color: #ffcf4d;
+}
+
+.hudCompassDistance {
+  font-size: 0.7rem;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+/* Toast */
+
+.toast {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 96;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.4rem;
+  font-family: sans-serif;
+  font-weight: 600;
+  color: #fff;
+  user-select: none;
+  pointer-events: none;
+  animation: toastPop 2.2s ease forwards;
+}
+
+.toast-danger {
+  background: rgba(139, 20, 20, 0.85);
+}
+
+.toast-golden {
+  background: rgba(150, 110, 10, 0.85);
+}
+
+.toast-info {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes toastPop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -0.4rem);
+  }
+  12% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Victory screen */
+
+.victoryOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: auto;
+}
+
+.victoryCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 2rem 2.5rem;
+  border-radius: 0.6rem;
+  background: rgb(30, 27, 22);
+  border: 1px solid rgba(255, 207, 77, 0.35);
+  color: #fff;
+  font-family: sans-serif;
+  text-align: center;
+  min-width: 280px;
+}
+
+.victoryTitle {
+  font-family: "NanumBrush";
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.victoryRank {
+  font-family: "NanumBrush";
+  font-size: 5rem;
+  line-height: 1;
+  margin: 0.3rem 0;
+}
+
+.victoryRank.rank-S {
+  color: #ffcf4d;
+}
+
+.victoryRank.rank-A {
+  color: #8affc1;
+}
+
+.victoryRank.rank-B {
+  color: #8ac4ff;
+}
+
+.victoryRank.rank-C {
+  color: #cfcfcf;
+}
+
+.victoryStats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.victoryActions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.victoryActions button {
+  padding: 0.55rem 1.2rem;
+  border-radius: 0.4rem;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #ffcf4d;
+  color: #211a0c;
+}
+
+.victoryActions button.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+}

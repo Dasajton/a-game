@@ -1,0 +1,3 @@
+export const TOTAL_SCROLLS = 5;
+export const DETECTION_PENALTY_SECONDS = 15;
+export const GUARDIAN_DETECTION_RADIUS = 7;
